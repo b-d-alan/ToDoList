@@ -4,21 +4,25 @@ import csv
 if "log.csv" not in os.listdir():
     with open("log.csv","w") as f:
         writer = csv.writer(f)
-        writer.writerow(["id","task","status"])
+        writer.writerow(["Id","Task","Status"])
 def new_task(input):
-    with open("log.csv","a") as f:
-        reader = csv.reader(f):
+    with open("log.csv","a+",newline="") as f:
+        f.seek(0)   # move pointer to start
+        reader = csv.reader(f)
+        f.seek(0,2)
         rows=[]
         for row in reader:
             rows.append(row)
         writer= csv.writer(f)
-        writer.writerow([len(rows),f"{input.split()[1:]}","pending"])
+        writer.writerow([len(rows)," ".join(input.split()[1:]),"pending"])
 def show_tasks():
     with open("log.csv","r") as f:
         reader=csv.reader(f)
         for row in reader:
             if row[2]=="pending":
-                print(row)
+                for i in row:
+                    print(i,end=" ")
+                print()
 def task_completed(input):
     data=[]
     with open("log.csv","r") as f:
@@ -28,7 +32,7 @@ def task_completed(input):
     for i in range(len(data)):
         if data[i][0]==input.split()[1]:
             data[i][2]="completed"
-    with open("log.csv","w") as f:
+    with open("log.csv","w",newline="") as f:
         writer=csv.writer(f)
         writer.writerows(data)
 while True:
@@ -36,7 +40,9 @@ while True:
     input=input("enter your command: ")
     if input.startswith("new_task"):
         new_task(input)
+        del input
     elif input.startswith("done"):
         task_completed(input)
+        del input
     elif input=="quit":
         break

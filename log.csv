@@ -1,1 +1,6 @@
 id,task,status
+0,testtask,completed
+0,testtask,completed
+0,testtask,completed
+0,newtesttask,pending
+0,finishthisprogram,pending
