@@ -6,13 +6,12 @@ if "log.csv" not in os.listdir():
         writer = csv.writer(f)
         writer.writerow(["Id","Task","Status"])
 def new_task(input):
-    with open("log.csv","a+",newline="") as f:
-        f.seek(0)   # move pointer to start
+    with open("log.csv","r",newline="") as f:
         reader = csv.reader(f)
-        f.seek(0,2)
         rows=[]
         for row in reader:
             rows.append(row)
+    with open("log.csv","a",newline="") as f:
         writer= csv.writer(f)
         writer.writerow([len(rows)," ".join(input.split()[1:]),"pending"])
 def show_tasks():
