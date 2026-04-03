@@ -1,0 +1,3 @@
+echo starting program...
+python  "C:\Users\Daniel\Desktop\Projects\ToDoList\index.py"
+pause
