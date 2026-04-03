@@ -1,3 +1,6 @@
+print()
+print()
+print()
 print("Hello!! I'm Todo!!, your personal assistent here to help you manage your tasks")
 import os 
 import csv
