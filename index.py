@@ -18,6 +18,7 @@ def new_task(input):
         writer= csv.writer(f)
         writer.writerow([len(rows)," ".join(input.split()[1:]),"pending"])
 def show_tasks():
+    print()
     with open("log.csv","r") as f:
         reader=csv.reader(f)
         for row in reader:

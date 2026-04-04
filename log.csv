@@ -1,1 +1,7 @@
-Id,Task,Status
+Id,Task,Status1,smack jacob,pending
+1,smack jacob,completed
+2,smack jacob hard,completed
+3,call- chem probs,pending
+4,call- phy probs,pending
+5,read chem,pending
+6,cs- type c,pending
