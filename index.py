@@ -8,6 +8,8 @@ if "log.csv" not in os.listdir():
     with open("log.csv","w") as f:
         writer = csv.writer(f)
         writer.writerow(["Id","Task","Status"])
+
+
 def new_task(input):
     with open("log.csv","r",newline="") as f:
         reader = csv.reader(f)
@@ -17,6 +19,8 @@ def new_task(input):
     with open("log.csv","a",newline="") as f:
         writer= csv.writer(f)
         writer.writerow([len(rows)," ".join(input.split()[1:]),"pending"])
+
+
 def show_tasks():
     print()
     with open("log.csv","r") as f:
@@ -26,6 +30,8 @@ def show_tasks():
                 for i in row:
                     print(i,end=" ")
                 print()
+
+
 def task_completed(input):
     data=[]
     with open("log.csv","r") as f:
@@ -38,14 +44,20 @@ def task_completed(input):
     with open("log.csv","w",newline="") as f:
         writer=csv.writer(f)
         writer.writerows(data)
+
+
+command_function_hashing={
+    "new":new_task(command_argument),
+    "done":task_completed(command_argument),
+    "show":show_tasks(),
+    "help":help()
+}
+show_tasks()
 while True:
-    show_tasks()
-    input=input("enter your command: ")
-    if input.startswith("new_task"):
-        new_task(input)
-        del input
-    elif input.startswith("done"):
-        task_completed(input)
-        del input
-    elif input=="quit":
-        break
+    command=input("enter your command: ")
+    command_keyword=command.split()[0]
+    command_argument=" ".join(command.split()[1:])
+    if command_keyword in command_function_hashing:
+        command_function_hashing[command_keyword]
+    else:
+        print("invalid command","enter 'help' for help regarding commands",sep="\n")
