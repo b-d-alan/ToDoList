@@ -1,8 +1,11 @@
-Id,Task,Status1,smack jacob,pending
-1,smack jacob,completed
+Id,Task,Status
+1,smack jacob,pending
 2,smack jacob hard,completed
-3,call- chem probs,pending
+3,call- chem probs,completed
 4,call- phy probs,pending
 5,read chem,pending
-6,cs- type c,pending
+6,cs- type c,completed
 7,task name,completed
+8,bath,completed
+9,check if TODO is alright,completed
+10,check again,pending
